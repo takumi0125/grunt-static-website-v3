@@ -589,6 +589,16 @@ module.exports = (grunt) ->
           'coffee:default'
         ]
 
+      dataJson:
+        options:
+          cwd: __dirname
+        files: DATA_JSON
+        tasks: [
+          'newer:jsonlint'
+          'jade'
+          'assemble'
+        ]
+
 
     ###############
     ### connect ###

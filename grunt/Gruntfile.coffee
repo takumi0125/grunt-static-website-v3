@@ -29,7 +29,7 @@ DATA_JSON = "#{SRC_DIR}/#{EXCRUSION_PREFIX}data.json"
 ASSETS_DIR = 'assets'
 
 # clean対象のディレクトリ (除外したいパスがある場合にnode-globのシンタックスで指定)
-CLEAN_DIR = [ PUBLISH_DIR ]
+CLEAN_DIR = [ "#{PUBLISH_DIR}/**/*" ]
 
 # 各種パス
 paths =
@@ -435,13 +435,12 @@ module.exports = (grunt) ->
 
     sass:
       options:
-        unixNewlines: true
-        sourcemap: 'none'
-        style: 'expanded'
+        sourceMap: false
+        outputStyle: 'expanded'
       default:
         expand: true
         cwd: SRC_DIR
-        src: _createSrcArr 'css'
+        src: _createSrcArr 'sass'
         filter: 'isFile'
         dest: PUBLISH_DIR
         ext: '.css'
